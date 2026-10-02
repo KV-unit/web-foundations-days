@@ -55,19 +55,19 @@ function addNote(text, category) {
     console.log("Error: Note must be between 1 and 200 characters.");
     return false;
   }
-  
+
   // 2. Check for duplicates
   if (isDuplicate(text)) {
     console.log("Error: This note already exists.");
     return false;
   }
-  
+
   // 3. Check category
   if (!["personal", "work", "study"].includes(category)) {
     console.log("Error: Category must be 'personal', 'work', or 'study'.");
     return false;
   }
-  
+
   // 4. Add note
   notes.push({
     id: notes.length + 1,
@@ -96,8 +96,19 @@ notes = originalNotes;            // restore the original array for subsequent t
 console.log("\n--- Testing countByCategory ---");
 console.log(countByCategory());   // expect: { personal: 2, work: 1, study: 2 }
 
+console.log("\n--- Testing countByCategory (edge case) ---");
+let saved = notes;
+notes = [];
+console.log(countByCategory()); // expect: {}
+notes = saved;
+
 console.log("\n--- Testing getSummary ---");
 console.log(getSummary());        // expect: "5 notes: 2 personal, 1 work, 2 study."
+
+console.log("\n--- Testing getSummary (edge case) ---");
+notes = [];
+console.log(getSummary()); // expect: "0 notes: 0 personal, 0 work, 0 study."
+notes = saved;
 
 console.log("\n--- Testing isDuplicate ---");
 console.log(isDuplicate("buy milk and bread")); // expect: true

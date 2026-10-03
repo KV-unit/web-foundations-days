@@ -1,0 +1,117 @@
+/* --- 1. Define Global Variables (Light Mode Default) --- */
+:root {
+    --bg-color: #f4f7f6;       /* Light grayish background */
+    --text-color: #333333;     /* Dark gray text for readability */
+    --warning-color: #f39c12;  /* Orange for warning */
+    --over-color: #e74c3c;     /* Red for over limit */
+    
+    /* Additional variables for styling the UI */
+    --border-color: #ccc;
+    --btn-bg: #e0e0e0;
+    --btn-text: #333;
+    --btn-hover: #d0d0d0;
+}
+
+/* --- 2. Dark Mode Variable Overrides --- */
+body.dark {
+    --bg-color: #1a1a1a;       /* Very dark gray */
+    --text-color: #f4f7f6;     /* Light text */
+    --warning-color: #f1c40f;  /* Brighter orange for dark mode */
+    --over-color: #ff6b6b;     /* Brighter red for dark mode */
+    
+    /* Dark mode UI styling overrides */
+    --border-color: #444;
+    --btn-bg: #333;
+    --btn-text: #f4f7f6;
+    --btn-hover: #444;
+}
+
+/* --- 3. Base Body Styling --- */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s; /* Smooth theme transition */
+}
+
+/* --- 4. Element Styling to match the HTML --- */
+h1 {
+    margin-bottom: 0.5rem;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    max-width: 500px;
+    height: 150px;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--text-color);
+}
+
+/* Styling for the counter paragraphs */
+p {
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+#char-count {
+    margin-bottom: 0.5rem;
+}
+
+#word-count {
+    margin-bottom: 1.5rem;
+}
+
+/* Button Container (to put them side by side) */
+button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: var(--btn-hover);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* --- 5. Required State Classes from the Pattern --- */
+.warning {
+    color: var(--warning-color);
+}
+
+.over {
+    color: var(--over-color);
+    font-weight: bold;
+}

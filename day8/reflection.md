@@ -1,0 +1,7 @@
+# Day 8 Reflection
+
+The most difficult concept in the course for me was asynchronous JavaScript, especially `fetch`. At first I mixed up what each piece does: I thought `response.json()` checked whether a request succeeded, when it actually reads the body and parses it, and it is `response.ok` that tells you whether the request worked. What helped was building the QuickNotes client one request at a time (GET, then POST, then DELETE) and sending every call through a single `request()` helper that checks `response.ok`, throws on failure, and is wrapped in try/catch/finally. Watching the loading, success, error, and empty states change on the page made the order of events concrete instead of abstract.
+
+If I could improve one part of my capstone, it would be the API client. It talks to JSONPlaceholder, which pretends to save and delete notes but does not, so everything I create disappears on reload. Its error messages are also generic ("Request failed with status 404"), and it does not tell a network failure apart from a server error. I would build a small real backend and show a clearer message for each kind of failure, such as a missing note versus a server problem.
+
+Next, I want to go deeper on three steps of the design framework: estimating load, designing APIs, and data modelling. In this assignment they shaped everything else. The traffic numbers justified the waiting room, the API defined what the system had to do, and the table constraints are what actually prevent double-booking. I want to get faster and more confident at all three.
